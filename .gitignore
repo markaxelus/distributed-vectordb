@@ -45,5 +45,3 @@ Thumbs.db
 # For a BINARY project: do NOT ignore (remove from here). 
 # For a LIBRARY project: recommended to ignore.
 Cargo.lock
-
-vector_db/target/*
