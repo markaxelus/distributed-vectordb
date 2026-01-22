@@ -1,0 +1,31 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Rust Cache
+      uses: Swatinem/rust-cache@v2
+      
+    - name: Check Formatting
+      run: cargo fmt --all -- --check
+    
+    - name: Check Linting (Clippy)
+      run: cargo clippy -- -D warnings
+    
+    - name: Build
+      run: cargo build --verbose
+   
+    - name: Run Tests
+      run: cargo test --verbose
